@@ -1,0 +1,86 @@
+{
+  "nextId": 12,
+  "transactions": [
+    {
+      "amount": "5200.00",
+      "category": "pensja",
+      "date": "2026-09-01",
+      "id": 1,
+      "note": "wypłata za wrzesień",
+      "type": "income"
+    },
+    {
+      "amount": "1800.00",
+      "category": "mieszkanie",
+      "date": "2026-09-05",
+      "id": 2,
+      "note": "czynsz",
+      "type": "expense"
+    },
+    {
+      "amount": "412.37",
+      "category": "jedzenie",
+      "date": "2026-09-12",
+      "id": 3,
+      "note": "zakupy spożywcze",
+      "type": "expense"
+    },
+    {
+      "amount": "89.99",
+      "category": "rozrywka",
+      "date": "2026-09-20",
+      "id": 4,
+      "note": "kino",
+      "type": "expense"
+    },
+    {
+      "amount": "5200.00",
+      "category": "pensja",
+      "date": "2026-10-01",
+      "id": 5,
+      "note": "wypłata za październik",
+      "type": "income"
+    },
+    {
+      "amount": "350.00",
+      "category": "korepetycje",
+      "date": "2026-10-08",
+      "id": 6,
+      "note": "matematyka, 5 lekcji",
+      "type": "income"
+    },
+    {
+      "amount": "1800.00",
+      "category": "mieszkanie",
+      "date": "2026-10-05",
+      "id": 7,
+      "note": "czynsz",
+      "type": "expense"
+    },
+    {
+      "amount": "523.10",
+      "category": "jedzenie",
+      "date": "2026-10-14",
+      "id": 8,
+      "note": "zakupy na tydzień",
+      "type": "expense"
+    },
+    {
+      "amount": "120.00",
+      "category": "transport",
+      "date": "2026-10-02",
+      "id": 9,
+      "note": "bilet miesięczny",
+      "type": "expense"
+    },
+    {
+      "amount": "59.90",
+      "category": "rozrywka",
+      "date": "2026-10-18",
+      "id": 10,
+      "note": "gra planszowa",
+      "type": "expense"
+    }
+  ],
+  "version": 1
+}

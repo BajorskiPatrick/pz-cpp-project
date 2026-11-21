@@ -1,0 +1,13 @@
+# Katalogi budowania
+build/
+cmake-build-*/
+out/
+
+# Pliki IDE
+.idea/
+.vs/
+.vscode/
+
+# Domyślny plik z danymi użytkownika i pliki tymczasowe zapisu
+/skarbonka.json
+*.json.tmp
