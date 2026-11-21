@@ -28,7 +28,8 @@ Wydatki według kategorii:
 - usuwanie transakcji po identyfikatorze albo wszystkich transakcji z danego miesiąca lub roku,
 - lista transakcji w kolejności chronologicznej z filtrami `--type`, `--category`, `--month`, `--year`,
 - podsumowanie miesiąca, roku lub całego okresu: przychody, wydatki, saldo, udział kategorii
-  w wydatkach, a dla roku i całego okresu także saldo w poszczególnych miesiącach,
+  w wydatkach, a dla roku i całego okresu także saldo w poszczególnych miesiącach (gdy dane
+  obejmują więcej niż jeden miesiąc),
 - kategorie bez względu na wielkość liter (także polskich: `ŻYWNOŚĆ` = `żywność`) i spacje na brzegach,
 - kwoty liczone w groszach (bez błędów zaokrągleń), akceptowany zapis `12.50` i `12,50`,
 - kontrola poprawności danych (np. odrzucenie daty `2026-02-30`, kwota od `0.01` do `1000000000.00`)
@@ -61,6 +62,11 @@ cmake --build build
 ```
 
 Testy można wyłączyć opcją `-DSKARBONKA_BUILD_TESTS=OFF`.
+
+Powyższe polecenia (oraz `ctest` w sekcji [Testy](#testy)) wymagają, żeby `cmake`, `ninja`
+i kompilator były w `PATH`. Jeśli są zainstalowane tylko razem z CLion, najprościej uruchomić je z terminala
+wbudowanego w CLion albo dopisać do `PATH` katalogi `bin\cmake\win\x64\bin`, `bin\ninja\win\x64`
+i `bin\mingw\bin` z katalogu instalacji CLion.
 
 Uwaga (Windows): pliki źródłowe Boost są głęboko zagnieżdżone, dlatego katalog budowania
 nie powinien mieć bardzo długiej ścieżki (limit 260 znaków). Ścieżka typu
@@ -145,9 +151,11 @@ na `stderr`) i `2` przy nieoczekiwanym błędzie wewnętrznym.
 ```
 
 Kategorie są zapisywane małymi literami (także polskimi) i bez spacji na brzegach, więc
-`Jedzenie`, ` jedzenie` oraz `ŻYWNOŚĆ` i `żywność` to odpowiednio te same kategorie. Pole `nextId` to numer, który dostanie następna transakcja – dzięki niemu
-identyfikatory usuniętych transakcji nie są używane ponownie (pole jest opcjonalne; gdy go brak,
-program wylicza je z istniejących identyfikatorów).
+`Jedzenie`, ` jedzenie` oraz `ŻYWNOŚĆ` i `żywność` to odpowiednio te same kategorie.
+
+Pole `nextId` to numer, który dostanie następna transakcja – dzięki niemu identyfikatory
+usuniętych transakcji nie są używane ponownie (pole jest opcjonalne; gdy go brak, program
+wylicza je z istniejących identyfikatorów).
 
 ## Testy
 
