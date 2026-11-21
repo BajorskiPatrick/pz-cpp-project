@@ -121,10 +121,10 @@ skarbonka remove --month 2026-10
 skarbonka remove --year 2025
 ```
 
-Przykładowe dane są w katalogu `przyklady/` (polecenie uruchamiane z katalogu projektu):
+Przykładowe dane są w katalogu `examples/` (polecenie uruchamiane z katalogu projektu):
 
 ```bash
-skarbonka summary --file przyklady/budzet.json
+skarbonka summary --file examples/budget.json
 ```
 
 Program kończy się kodem `0` przy powodzeniu (także gdy filtr nic nie znalazł), `1` przy błędzie
@@ -175,7 +175,7 @@ include/skarbonka/   nagłówki (interfejs modułów)
 src/                 implementacja + main.cpp
 tests/               testy jednostkowe
 cmake/               pobieranie zależności
-przyklady/           przykładowy plik z danymi
+examples/            przykładowy plik z danymi
 ```
 
 ## Autor

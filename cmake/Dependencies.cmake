@@ -1,9 +1,9 @@
-# Zależności zewnętrzne.
-# Najpierw szukamy bibliotek zainstalowanych w systemie (find_package),
-# a jeśli ich nie ma - FetchContent pobiera je automatycznie podczas konfiguracji.
+# External dependencies.
+# Libraries installed in the system are looked up first (find_package);
+# if they are missing, FetchContent downloads them automatically during configuration.
 include(FetchContent)
 
-# --- nlohmann/json: zapis i odczyt danych w formacie JSON ----------------------
+# --- nlohmann/json: saving and loading data in JSON format ----------------------
 FetchContent_Declare(nlohmann_json
   URL https://github.com/nlohmann/json/releases/download/v3.12.0/json.tar.xz
   DOWNLOAD_EXTRACT_TIMESTAMP TRUE
@@ -11,8 +11,8 @@ FetchContent_Declare(nlohmann_json
 )
 FetchContent_MakeAvailable(nlohmann_json)
 
-# --- Boost: Program_options (linia poleceń) i String_algo (napisy) -------------
-# Budujemy tylko potrzebne moduły - cała biblioteka Boost jest bardzo duża.
+# --- Boost: Program_options (command line) and String_algo (strings) -----------
+# Only the required modules are built - the whole Boost library is very large.
 set(BOOST_INCLUDE_LIBRARIES program_options algorithm)
 set(BOOST_ENABLE_CMAKE ON)
 FetchContent_Declare(Boost
@@ -22,15 +22,15 @@ FetchContent_Declare(Boost
 )
 FetchContent_MakeAvailable(Boost)
 
-# Systemowy Boost udostępnia nagłówki jako Boost::headers, pobrany - jako osobne moduły.
+# A system Boost exposes its headers as Boost::headers, a downloaded one as separate modules.
 if(TARGET Boost::algorithm)
   set(SKARBONKA_BOOST_HEADERS Boost::algorithm)
 else()
   set(SKARBONKA_BOOST_HEADERS Boost::headers)
 endif()
 
-# --- MinGW: biblioteka wątków jest dostępna tylko jako DLL --------------------
-# Kopiujemy ją obok pliku wykonywalnego, żeby program działał poza IDE.
+# --- MinGW: the threading library is only available as a DLL ------------------
+# Copy it next to the executable so the program also runs outside the IDE.
 function(skarbonka_copy_runtime target)
   if(MINGW)
     get_filename_component(compiler_dir "${CMAKE_CXX_COMPILER}" DIRECTORY)

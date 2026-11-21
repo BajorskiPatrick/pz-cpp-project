@@ -334,7 +334,7 @@ std::string helpText()
             "  skarbonka remove --id 3\n"
             "  skarbonka remove --month 2026-10\n"
             "  skarbonka remove --year 2025\n"
-            "  skarbonka list --file przyklady/budzet.json\n";
+            "  skarbonka list --file examples/budget.json\n";
     return text.str();
 }
 

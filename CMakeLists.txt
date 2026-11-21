@@ -9,17 +9,17 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   set(CMAKE_BUILD_TYPE Release)
 endif()
 
-option(SKARBONKA_BUILD_TESTS "Budowanie testów jednostkowych (GoogleTest)" ON)
+option(SKARBONKA_BUILD_TESTS "Build unit tests (GoogleTest)" ON)
 
-# MinGW: biblioteki standardowe linkujemy statycznie, żeby program dało się
-# uruchomić także spoza IDE (bez libstdc++-6.dll w PATH).
+# MinGW: link the standard libraries statically so the program can also be
+# run outside the IDE (without libstdc++-6.dll in PATH).
 if(MINGW)
   add_link_options(-static-libgcc -static-libstdc++)
 endif()
 
 include(cmake/Dependencies.cmake)
 
-# --- Biblioteka z logiką programu (wspólna dla aplikacji i testów) ----------
+# --- Library with the program logic (shared by the application and tests) ---
 add_library(skarbonka_core STATIC
   src/App.cpp
   src/Budget.cpp
@@ -36,11 +36,11 @@ target_link_libraries(skarbonka_core
   PRIVATE nlohmann_json::nlohmann_json ${SKARBONKA_BOOST_HEADERS}
 )
 
-# --- Aplikacja konsolowa -----------------------------------------------------
+# --- Console application -----------------------------------------------------
 add_executable(skarbonka src/main.cpp)
 target_link_libraries(skarbonka PRIVATE skarbonka_core)
 if(WIN32)
-  # CommandLineToArgvW (argumenty w UTF-16 -> UTF-8, patrz main.cpp).
+  # CommandLineToArgvW (UTF-16 arguments -> UTF-8, see main.cpp).
   target_link_libraries(skarbonka PRIVATE shell32)
 endif()
 skarbonka_copy_runtime(skarbonka)
@@ -56,7 +56,7 @@ endfunction()
 skarbonka_warnings(skarbonka_core)
 skarbonka_warnings(skarbonka)
 
-# --- Testy --------------------------------------------------------------------
+# --- Tests --------------------------------------------------------------------
 if(SKARBONKA_BUILD_TESTS)
   enable_testing()
   add_subdirectory(tests)
